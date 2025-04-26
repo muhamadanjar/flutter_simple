@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "448652889990",
+    "project_id": "simple-56cab",
+    "storage_bucket": "simple-56cab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448652889990:android:388074374becfdae2aa607",
+        "android_client_info": {
+          "package_name": "com.example.flutter_simple"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRGDa6h5upPtTcHRskrh8Aq17rEbiIL1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
