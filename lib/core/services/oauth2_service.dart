@@ -43,7 +43,7 @@ class OAuth2Service {
     try {
       // Generate code verifier for PKCE
       final codeVerifier = _generateRandomString(64);
-      final codeChallenge = _generateCodeChallenge(codeVerifier);
+      // final codeChallenge = _generateCodeChallenge(codeVerifier);
 
       // Konfigurasi request
       final authorizationTokenRequest = AuthorizationTokenRequest(

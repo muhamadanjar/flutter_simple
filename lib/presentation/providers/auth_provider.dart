@@ -1,5 +1,6 @@
 // lib/presentation/providers/auth_provider.dart
 import 'dart:async';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../core/usecases/usecase.dart';
@@ -14,7 +15,7 @@ part 'auth_provider.g.dart';
 
 // Auth state provider - streams the current auth state
 @riverpod
-Stream<AuthResult> authState(AuthStateRef ref) {
+Stream<AuthResult> authState(Ref ref) {
   final authRepository = ref.watch(authRepositoryProvider);
   return authRepository.authStateChanges;
 }
@@ -155,7 +156,7 @@ class AuthNotifier extends _$AuthNotifier {
 
 // User role provider - checks if a user has a specific role
 @riverpod
-Future<bool> hasRole(HasRoleRef ref, String userId, String role) {
+Future<bool> hasRole(Ref ref, String userId, String role) {
   final checkUserRoleUseCase = ref.watch(checkUserRoleUseCaseProvider);
   final params = CheckUserRoleParams(userId: userId, role: role);
 
@@ -169,7 +170,7 @@ Future<bool> hasRole(HasRoleRef ref, String userId, String role) {
 
 // Current user provider - provides the current authenticated user
 @riverpod
-Future<User?> currentUser(CurrentUserRef ref) async {
+Future<User?> currentUser(Ref ref) async {
   // Listen to auth state changes
   ref.watch(authStateProvider);
 
