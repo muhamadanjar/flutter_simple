@@ -1,14 +1,17 @@
-// lib/presentation/providers/providers.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../core/api/api_client.dart';
+import '../../core/services/oauth2_service.dart';
 import '../../data/datasources/auth_remote_datasource.dart';
 import '../../data/datasources/user_remote_datasource.dart';
 import '../../data/repositories/auth_repository_impl.dart';
 import '../../data/repositories/user_repository_impl.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/repositories/user_repository.dart';
+import '../../domain/usecases/sigin_google_usecase.dart';
+import '../../domain/usecases/signin_apple_usecase.dart';
+import '../../domain/usecases/signin_microsoft_usecase.dart';
 import '../../domain/usecases/signin_usecase.dart';
 import '../../domain/usecases/signup_usecase.dart';
 import '../../domain/usecases/signout_usecase.dart';
@@ -24,6 +27,12 @@ ApiClient apiClient(Ref ref) {
   return ApiClient();
 }
 
+// OAuth2 service provider
+@riverpod
+OAuth2Service oauth2Service(Ref ref) {
+  return OAuth2Service(apiClient: ref.watch(apiClientProvider));
+}
+
 // Network info provider
 @riverpod
 NetworkInfo networkInfo(Ref ref) {
@@ -35,6 +44,7 @@ NetworkInfo networkInfo(Ref ref) {
 AuthRemoteDataSource authRemoteDataSource(Ref ref) {
   return AuthRemoteDataSourceImpl(
     apiClient: ref.watch(apiClientProvider),
+    oauth2Service: ref.watch(oauth2ServiceProvider),
   );
 }
 
@@ -86,4 +96,20 @@ GetCurrentUserUseCase getCurrentUserUseCase(Ref ref) {
 @riverpod
 CheckUserRoleUseCase checkUserRoleUseCase(Ref ref) {
   return CheckUserRoleUseCase(ref.watch(userRepositoryProvider));
+}
+
+// OAuth Use Cases
+@riverpod
+SignInWithGoogleUseCase signInWithGoogleUseCase(Ref ref) {
+  return SignInWithGoogleUseCase(ref.watch(authRepositoryProvider));
+}
+
+@riverpod
+SignInWithMicrosoftUseCase signInWithMicrosoftUseCase(Ref ref) {
+  return SignInWithMicrosoftUseCase(ref.watch(authRepositoryProvider));
+}
+
+@riverpod
+SignInWithAppleUseCase signInWithAppleUseCase(Ref ref) {
+  return SignInWithAppleUseCase(ref.watch(authRepositoryProvider));
 }

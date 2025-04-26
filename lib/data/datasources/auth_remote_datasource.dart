@@ -7,6 +7,7 @@ import '../../core/api/api_client.dart';
 import '../../core/constants/api_constants.dart';
 import '../../core/constants/storage_constants.dart';
 import '../../core/errors/failure.dart';
+import '../../core/services/oauth2_service.dart';
 import '../models/auth_model.dart';
 import '../models/user_model.dart';
 
@@ -19,17 +20,22 @@ abstract class AuthRemoteDataSource {
       String password,
       String? displayName
       );
+  Future<AuthModel> signInWithGoogle();
+  Future<AuthModel> signInWithMicrosoft();
+  Future<AuthModel> signInWithApple();
   Future<void> signOut();
   Future<void> resetPassword(String email);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiClient _apiClient;
+  final OAuth2Service _oauth2Service;
   final _authStateController = StreamController<AuthModel>.broadcast();
 
   AuthRemoteDataSourceImpl({
     required ApiClient apiClient,
-  }) : _apiClient = apiClient {
+    required OAuth2Service oauth2Service,
+  }) : _apiClient = apiClient, _oauth2Service = oauth2Service {
     // Initialize auth state
     _checkAuthState();
   }
@@ -201,6 +207,75 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } catch (e) {
       return AuthModel.unauthenticated(
         errorMessage: 'Registration failed: ${e.toString()}',
+      );
+    }
+  }
+
+  @override
+  Future<AuthModel> signInWithGoogle() async {
+    try {
+      print(">>> signInWithGoogle started");
+      final authModel = await _oauth2Service.loginWithGoogle();
+
+      if (authModel.isAuthenticated) {
+        // Update auth state
+        _authStateController.add(authModel);
+        print("<<< signInWithGoogle completed successfully");
+      } else {
+        print("<<< signInWithGoogle failed: ${authModel.errorMessage}");
+      }
+
+      return authModel;
+    } catch (e) {
+      print("<<< signInWithGoogle failed with error: ${e.toString()}");
+      return AuthModel.unauthenticated(
+        errorMessage: 'Google sign in failed: ${e.toString()}',
+      );
+    }
+  }
+
+  @override
+  Future<AuthModel> signInWithMicrosoft() async {
+    try {
+      print(">>> signInWithMicrosoft started");
+      final authModel = await _oauth2Service.loginWithMicrosoft();
+
+      if (authModel.isAuthenticated) {
+        // Update auth state
+        _authStateController.add(authModel);
+        print("<<< signInWithMicrosoft completed successfully");
+      } else {
+        print("<<< signInWithMicrosoft failed: ${authModel.errorMessage}");
+      }
+
+      return authModel;
+    } catch (e) {
+      print("<<< signInWithMicrosoft failed with error: ${e.toString()}");
+      return AuthModel.unauthenticated(
+        errorMessage: 'Microsoft sign in failed: ${e.toString()}',
+      );
+    }
+  }
+
+  @override
+  Future<AuthModel> signInWithApple() async {
+    try {
+      print(">>> signInWithApple started");
+      final authModel = await _oauth2Service.loginWithApple();
+
+      if (authModel.isAuthenticated) {
+        // Update auth state
+        _authStateController.add(authModel);
+        print("<<< signInWithApple completed successfully");
+      } else {
+        print("<<< signInWithApple failed: ${authModel.errorMessage}");
+      }
+
+      return authModel;
+    } catch (e) {
+      print("<<< signInWithApple failed with error: ${e.toString()}");
+      return AuthModel.unauthenticated(
+        errorMessage: 'Apple sign in failed: ${e.toString()}',
       );
     }
   }

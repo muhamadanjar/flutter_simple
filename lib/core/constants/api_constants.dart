@@ -13,4 +13,7 @@ class ApiConstants {
   static const String userById = '/users/{id}';
   static const String updateUser = '/users/{id}';
   static const String updateUserRole = '/users/{id}/role';
+
+  static const String authorizeEndpoint = '/oauth2/authorize';
+  static const String tokenEndpoint = '/oauth2/token';
 }

@@ -27,6 +27,16 @@ abstract class AuthRepository {
   /// Sign out
   Future<Either<Failure, void>> signOut();
 
+  /// Sign in dengan Google OAuth2
+  Future<Either<Failure, AuthResult>> signInWithGoogle();
+
+  /// Sign in dengan Microsoft OAuth2
+  Future<Either<Failure, AuthResult>> signInWithMicrosoft();
+
+  /// Sign in dengan Apple OAuth2
+  Future<Either<Failure, AuthResult>> signInWithApple();
+
+
   /// Reset password
   Future<Either<Failure, void>> resetPassword(String email);
 }

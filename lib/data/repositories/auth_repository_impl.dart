@@ -130,4 +130,64 @@ class AuthRepositoryImpl implements AuthRepository {
       ));
     }
   }
+
+  @override
+  Future<Either<Failure, AuthResult>> signInWithApple() async{
+    if (await networkInfo.isConnected) {
+      try {
+        final authModel = await remoteDataSource.signInWithApple();
+        return Right(authModel.toDomain());
+      } on Failure catch (failure) {
+        return Left(failure);
+      } catch (e) {
+        return Left(ServerFailure(
+          message: 'Apple sign in failed: ${e.toString()}',
+        ));
+      }
+    } else {
+      return const Left(ServerFailure(
+        message: 'No internet connection',
+      ));
+    }
+  }
+
+  @override
+  Future<Either<Failure, AuthResult>> signInWithGoogle() async{
+    if (await networkInfo.isConnected) {
+      try {
+        final authModel = await remoteDataSource.signInWithGoogle();
+        return Right(authModel.toDomain());
+      } on Failure catch (failure) {
+        return Left(failure);
+      } catch (e) {
+        return Left(ServerFailure(
+          message: 'Google sign in failed: ${e.toString()}',
+        ));
+      }
+    } else {
+      return const Left(ServerFailure(
+        message: 'No internet connection',
+      ));
+    }
+  }
+
+  @override
+  Future<Either<Failure, AuthResult>> signInWithMicrosoft() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final authModel = await remoteDataSource.signInWithMicrosoft();
+        return Right(authModel.toDomain());
+      } on Failure catch (failure) {
+        return Left(failure);
+      } catch (e) {
+        return Left(ServerFailure(
+          message: 'Microsoft sign in failed: ${e.toString()}',
+        ));
+      }
+    } else {
+      return const Left(ServerFailure(
+        message: 'No internet connection',
+      ));
+    }
+  }
 }

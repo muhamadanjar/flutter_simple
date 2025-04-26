@@ -7,6 +7,7 @@ import '../../../core/utils/validators.dart';
 import '../../providers/auth_provider.dart';
 import '../../widgets/auth/auth_button.dart';
 import '../../widgets/auth/auth_textfield.dart';
+import '../../widgets/auth/social_button.dart';
 
 class SignInScreen extends HookConsumerWidget {
   const SignInScreen({super.key});
@@ -17,6 +18,7 @@ class SignInScreen extends HookConsumerWidget {
     final passwordController = useTextEditingController();
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final isLoading = useState(false);
+    final isSocialLoading = useState<SocialAuthProvider?>(null);
     final authNotifier = ref.read(authNotifierProvider.notifier);
 
     void signIn() async {
@@ -35,6 +37,57 @@ class SignInScreen extends HookConsumerWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(result.errorMessage ?? 'Sign in failed'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+
+    void signInWithGoogle() async {
+      isSocialLoading.value = SocialAuthProvider.google;
+
+      final result = await authNotifier.signInWithGoogle();
+
+      isSocialLoading.value = null;
+
+      if (!result.isAuthenticated && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result.errorMessage ?? 'Google sign in failed'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+
+    void signInWithMicrosoft() async {
+      isSocialLoading.value = SocialAuthProvider.microsoft;
+
+      final result = await authNotifier.signInWithMicrosoft();
+
+      isSocialLoading.value = null;
+
+      if (!result.isAuthenticated && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result.errorMessage ?? 'Microsoft sign in failed'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+
+    void signInWithApple() async {
+      isSocialLoading.value = SocialAuthProvider.apple;
+
+      final result = await authNotifier.signInWithApple();
+
+      isSocialLoading.value = null;
+
+      if (!result.isAuthenticated && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result.errorMessage ?? 'Apple sign in failed'),
             backgroundColor: Colors.red,
           ),
         );
@@ -111,6 +164,42 @@ class SignInScreen extends HookConsumerWidget {
                     onPressed: signIn,
                   ),
                   const SizedBox(height: 16.0),
+                  Row(
+                    children: [
+                      const Expanded(child: Divider()),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          'OR',
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const Expanded(child: Divider()),
+                    ],
+                  ),
+                  const SizedBox(height: 16.0),
+                  SocialAuthButton(
+                    provider: SocialAuthProvider.google,
+                    onPressed: signInWithGoogle,
+                    isLoading: isSocialLoading.value == SocialAuthProvider.google,
+                  ),
+                  const SizedBox(height: 12.0),
+                  SocialAuthButton(
+                    provider: SocialAuthProvider.microsoft,
+                    onPressed: signInWithMicrosoft,
+                    isLoading: isSocialLoading.value == SocialAuthProvider.microsoft,
+                  ),
+                  if (Theme.of(context).platform == TargetPlatform.iOS) ...[
+                    const SizedBox(height: 12.0),
+                    SocialAuthButton(
+                      provider: SocialAuthProvider.apple,
+                      onPressed: signInWithApple,
+                      isLoading: isSocialLoading.value == SocialAuthProvider.apple,
+                    ),
+                  ],
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

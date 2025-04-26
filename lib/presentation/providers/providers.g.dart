@@ -22,6 +22,24 @@ final apiClientProvider = AutoDisposeProvider<ApiClient>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef ApiClientRef = AutoDisposeProviderRef<ApiClient>;
+String _$oauth2ServiceHash() => r'3cc44b5c954425d3ee3ab959832de1b5e5e17145';
+
+/// See also [oauth2Service].
+@ProviderFor(oauth2Service)
+final oauth2ServiceProvider = AutoDisposeProvider<OAuth2Service>.internal(
+  oauth2Service,
+  name: r'oauth2ServiceProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$oauth2ServiceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef Oauth2ServiceRef = AutoDisposeProviderRef<OAuth2Service>;
 String _$networkInfoHash() => r'5e7680e5e247832edeb91d7f3aef5cbdbb78716f';
 
 /// See also [networkInfo].
@@ -39,7 +57,7 @@ final networkInfoProvider = AutoDisposeProvider<NetworkInfo>.internal(
 // ignore: unused_element
 typedef NetworkInfoRef = AutoDisposeProviderRef<NetworkInfo>;
 String _$authRemoteDataSourceHash() =>
-    r'ee57c18d741addd27f49e2884c972d342774ad74';
+    r'6560d50f49db03a647bfbf391c9ed8c93900f1e0';
 
 /// See also [authRemoteDataSource].
 @ProviderFor(authRemoteDataSource)
@@ -209,5 +227,68 @@ final checkUserRoleUseCaseProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef CheckUserRoleUseCaseRef = AutoDisposeProviderRef<CheckUserRoleUseCase>;
+String _$signInWithGoogleUseCaseHash() =>
+    r'665c8b7cec97ca0c16454bfd4072aeac9e931ed9';
+
+/// See also [signInWithGoogleUseCase].
+@ProviderFor(signInWithGoogleUseCase)
+final signInWithGoogleUseCaseProvider =
+    AutoDisposeProvider<SignInWithGoogleUseCase>.internal(
+      signInWithGoogleUseCase,
+      name: r'signInWithGoogleUseCaseProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$signInWithGoogleUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SignInWithGoogleUseCaseRef =
+    AutoDisposeProviderRef<SignInWithGoogleUseCase>;
+String _$signInWithMicrosoftUseCaseHash() =>
+    r'9a50120cbda8b046fb331eed90939efa805417ea';
+
+/// See also [signInWithMicrosoftUseCase].
+@ProviderFor(signInWithMicrosoftUseCase)
+final signInWithMicrosoftUseCaseProvider =
+    AutoDisposeProvider<SignInWithMicrosoftUseCase>.internal(
+      signInWithMicrosoftUseCase,
+      name: r'signInWithMicrosoftUseCaseProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$signInWithMicrosoftUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SignInWithMicrosoftUseCaseRef =
+    AutoDisposeProviderRef<SignInWithMicrosoftUseCase>;
+String _$signInWithAppleUseCaseHash() =>
+    r'a89a01601f720915a592b283e898b090fb6069d0';
+
+/// See also [signInWithAppleUseCase].
+@ProviderFor(signInWithAppleUseCase)
+final signInWithAppleUseCaseProvider =
+    AutoDisposeProvider<SignInWithAppleUseCase>.internal(
+      signInWithAppleUseCase,
+      name: r'signInWithAppleUseCaseProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$signInWithAppleUseCaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SignInWithAppleUseCaseRef =
+    AutoDisposeProviderRef<SignInWithAppleUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

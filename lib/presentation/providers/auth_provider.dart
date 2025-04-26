@@ -93,6 +93,64 @@ class AuthNotifier extends _$AuthNotifier {
       },
     );
   }
+
+  // Sign in with Google
+  Future<AuthResult> signInWithGoogle() async {
+    state = const AsyncValue.loading();
+
+    final signInWithGoogleUseCase = ref.read(signInWithGoogleUseCaseProvider);
+
+    final result = await signInWithGoogleUseCase.call(const NoParams());
+
+    return result.fold(
+          (failure) {
+        state = AsyncValue.error(failure, StackTrace.current);
+        return AuthResult.unauthenticated(errorMessage: failure.message);
+      },
+          (authResult) {
+        state = const AsyncValue.data(null);
+        return authResult;
+      },
+    );
+  }
+
+  Future<AuthResult> signInWithMicrosoft() async {
+    state = const AsyncValue.loading();
+
+    final signInWithMicrosoftUseCase = ref.read(signInWithMicrosoftUseCaseProvider);
+
+    final result = await signInWithMicrosoftUseCase.call(const NoParams());
+
+    return result.fold(
+          (failure) {
+        state = AsyncValue.error(failure, StackTrace.current);
+        return AuthResult.unauthenticated(errorMessage: failure.message);
+      },
+          (authResult) {
+        state = const AsyncValue.data(null);
+        return authResult;
+      },
+    );
+  }
+
+  Future<AuthResult> signInWithApple() async {
+    state = const AsyncValue.loading();
+
+    final signInWithAppleUseCase = ref.read(signInWithAppleUseCaseProvider);
+
+    final result = await signInWithAppleUseCase.call(const NoParams());
+
+    return result.fold(
+          (failure) {
+        state = AsyncValue.error(failure, StackTrace.current);
+        return AuthResult.unauthenticated(errorMessage: failure.message);
+      },
+          (authResult) {
+        state = const AsyncValue.data(null);
+        return authResult;
+      },
+    );
+  }
 }
 
 // User role provider - checks if a user has a specific role
