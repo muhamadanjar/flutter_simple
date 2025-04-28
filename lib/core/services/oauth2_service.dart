@@ -45,8 +45,11 @@ class OAuth2Service {
 
   OAuth2Service({required ApiClient apiClient}) : _apiClient = apiClient,
         _googleSignIn = GoogleSignIn(
-          clientId: "852245227352-5nqkh441oulat5vv9sa90l9fm2228dlj.apps.googleusercontent.com",
-          scopes: ['email', 'profile']
+          clientId: "448652889990-937k4gtbd1cnfvqjgeij2qq8gdnuefop.apps.googleusercontent.com",
+          scopes: [
+            'email',
+            'https://www.googleapis.com/auth/contacts.readonly',
+          ]
         );
 
   // Login dengan Google
@@ -63,6 +66,7 @@ class OAuth2Service {
           errorMessage: 'Google sign in was cancelled by user',
         );
       }
+      print("gogle user ${googleUser}");
 
       // Mendapatkan auth details dari request
       final GoogleSignInAuthentication googleAuth = await googleUser.authentication;

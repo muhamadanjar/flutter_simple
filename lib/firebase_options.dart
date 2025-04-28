@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBRGDa6h5upPtTcHRskrh8Aq17rEbiIL1U',
-    appId: '1:448652889990:android:388074374becfdae2aa607',
+    appId: '1:448652889990:android:c160b21d15afb7302aa607',
     messagingSenderId: '448652889990',
     projectId: 'simple-56cab',
     storageBucket: 'simple-56cab.firebasestorage.app',
@@ -59,10 +59,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBoJxCnth-ZC_0nM-KIUk85fXPob5zq3wg',
-    appId: '1:448652889990:ios:c6332aa06d5f80e52aa607',
+    appId: '1:448652889990:ios:70917e761a872a0e2aa607',
     messagingSenderId: '448652889990',
     projectId: 'simple-56cab',
     storageBucket: 'simple-56cab.firebasestorage.app',
+    androidClientId: '448652889990-937k4gtbd1cnfvqjgeij2qq8gdnuefop.apps.googleusercontent.com',
+    iosClientId: '448652889990-s6u6mbafo5j19r0f6fo5g7ab7nrb7nkr.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterSimple',
   );
+
 }
