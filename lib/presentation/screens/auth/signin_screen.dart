@@ -77,6 +77,20 @@ class SignInScreen extends HookConsumerWidget {
       }
     }
 
+    void signInWithKemnaker() async {
+      isSocialLoading.value = SocialAuthProvider.kemnaker;
+      final result = await authNotifier.sigInWithKemnaker();
+      isSocialLoading.value = null;
+      if (!result.isAuthenticated && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result.errorMessage ?? 'Apple sign in failed'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+
     void signInWithApple() async {
       isSocialLoading.value = SocialAuthProvider.apple;
 
@@ -187,10 +201,15 @@ class SignInScreen extends HookConsumerWidget {
                     isLoading: isSocialLoading.value == SocialAuthProvider.google,
                   ),
                   const SizedBox(height: 12.0),
+                  // SocialAuthButton(
+                  //   provider: SocialAuthProvider.microsoft,
+                  //   onPressed: signInWithMicrosoft,
+                  //   isLoading: isSocialLoading.value == SocialAuthProvider.microsoft,
+                  // ),
                   SocialAuthButton(
-                    provider: SocialAuthProvider.microsoft,
-                    onPressed: signInWithMicrosoft,
-                    isLoading: isSocialLoading.value == SocialAuthProvider.microsoft,
+                    provider: SocialAuthProvider.kemnaker,
+                    onPressed: signInWithKemnaker,
+                    isLoading: isSocialLoading.value == SocialAuthProvider.kemnaker,
                   ),
                   if (Theme.of(context).platform == TargetPlatform.iOS) ...[
                     const SizedBox(height: 12.0),

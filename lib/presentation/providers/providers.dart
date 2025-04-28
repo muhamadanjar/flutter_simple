@@ -10,6 +10,7 @@ import '../../data/repositories/user_repository_impl.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../../domain/usecases/sigin_google_usecase.dart';
+import '../../domain/usecases/sigin_kemnaker_usecase.dart';
 import '../../domain/usecases/signin_apple_usecase.dart';
 import '../../domain/usecases/signin_microsoft_usecase.dart';
 import '../../domain/usecases/signin_usecase.dart';
@@ -112,4 +113,9 @@ SignInWithMicrosoftUseCase signInWithMicrosoftUseCase(Ref ref) {
 @riverpod
 SignInWithAppleUseCase signInWithAppleUseCase(Ref ref) {
   return SignInWithAppleUseCase(ref.watch(authRepositoryProvider));
+}
+
+@riverpod
+SignInWithKemnakerUseCase signInWithKemnakerUseCase(Ref ref) {
+  return SignInWithKemnakerUseCase(ref.watch(authRepositoryProvider));
 }

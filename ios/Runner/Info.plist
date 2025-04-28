@@ -45,5 +45,22 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.example.flutter_simple</string>
+                <string>com.googleusercontent.apps.448652889990-s6u6mbafo5j19r0f6fo5g7ab7nrb7nkr</string>
+            </array>
+        </dict>
+    </array>
+    <key>GIDClientID</key>
+    <!-- TODO Replace this value: -->
+    <!-- Copied from GoogleService-Info.plist key CLIENT_ID -->
+    <string>448652889990-s6u6mbafo5j19r0f6fo5g7ab7nrb7nkr.apps.googleusercontent.com</string>
+
 </dict>
 </plist>

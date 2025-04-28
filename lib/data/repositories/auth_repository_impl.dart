@@ -190,4 +190,24 @@ class AuthRepositoryImpl implements AuthRepository {
       ));
     }
   }
+
+  @override
+  Future<Either<Failure, AuthResult>> signInWithKemnaker() async{
+    if (await networkInfo.isConnected) {
+      try {
+        final authModel = await remoteDataSource.signInWithKemnaker();
+        return Right(authModel.toDomain());
+      } on Failure catch (failure) {
+        return Left(failure);
+      } catch (e) {
+        return Left(ServerFailure(
+          message: 'Kemnaker sign in failed: ${e.toString()}',
+        ));
+      }
+    } else {
+      return const Left(ServerFailure(
+        message: 'No internet connection',
+      ));
+    }
+  }
 }

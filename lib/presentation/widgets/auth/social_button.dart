@@ -4,6 +4,7 @@ enum SocialAuthProvider {
   google,
   microsoft,
   apple,
+  kemnaker
 }
 
 class SocialAuthButton extends StatelessWidget {
@@ -61,19 +62,25 @@ class SocialAuthButton extends StatelessWidget {
     switch (provider) {
       case SocialAuthProvider.google:
         return Image.asset(
-          'assets/images/google_logo.png',
+          'assets/img/logo_apple.png',
           height: 24,
           width: 24,
         );
       case SocialAuthProvider.microsoft:
         return Image.asset(
-          'assets/images/microsoft_logo.png',
+          'assets/img/logo_microsoft.png',
           height: 24,
           width: 24,
         );
       case SocialAuthProvider.apple:
         return Image.asset(
-          'assets/images/apple_logo.png',
+          'assets/img/logo_apple.png',
+          height: 24,
+          width: 24,
+        );
+      case SocialAuthProvider.kemnaker:
+        return Image.asset(
+          'assets/img/logo_apple.png',
           height: 24,
           width: 24,
         );
@@ -88,6 +95,8 @@ class SocialAuthButton extends StatelessWidget {
         return 'Sign in with Microsoft';
       case SocialAuthProvider.apple:
         return 'Sign in with Apple';
+      case SocialAuthProvider.kemnaker:
+        return 'Sign in with Kemnaker';
     }
   }
 
@@ -99,6 +108,8 @@ class SocialAuthButton extends StatelessWidget {
         return const Color(0xFF2F2F2F);
       case SocialAuthProvider.apple:
         return Colors.black;
+      case SocialAuthProvider.kemnaker:
+        return const Color(0xFF15406a);
     }
   }
 
@@ -108,6 +119,8 @@ class SocialAuthButton extends StatelessWidget {
         return Colors.black87;
       case SocialAuthProvider.microsoft:
       case SocialAuthProvider.apple:
+        return Colors.white;
+      case SocialAuthProvider.kemnaker:
         return Colors.white;
     }
   }

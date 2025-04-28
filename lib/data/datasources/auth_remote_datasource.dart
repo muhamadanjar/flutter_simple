@@ -21,6 +21,7 @@ abstract class AuthRemoteDataSource {
   Future<AuthModel> signInWithGoogle();
   Future<AuthModel> signInWithMicrosoft();
   Future<AuthModel> signInWithApple();
+  Future<AuthModel> signInWithKemnaker();
   Future<void> signOut();
   Future<void> resetPassword(String email);
 }
@@ -277,6 +278,30 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       );
     }
   }
+
+  @override
+  Future<AuthModel> signInWithKemnaker() async {
+    try {
+      print(">>> signInWithMicrosoft started");
+      final authModel = await _oauth2Service.loginWithKemnaker();
+
+      if (authModel.isAuthenticated) {
+        // Update auth state
+        _authStateController.add(authModel);
+        print("<<< signInWithMicrosoft completed successfully");
+      } else {
+        print("<<< signInWithMicrosoft failed: ${authModel.errorMessage}");
+      }
+
+      return authModel;
+    } catch (e) {
+      print("<<< signInWithMicrosoft failed with error: ${e.toString()}");
+      return AuthModel.unauthenticated(
+        errorMessage: 'Microsoft sign in failed: ${e.toString()}',
+      );
+    }
+  }
+
 
   @override
   Future<void> signOut() async {

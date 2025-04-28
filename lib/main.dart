@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_simple/presentation/providers/providers.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +15,7 @@ final fcmServiceProvider = Provider<FCMService>((ref) {
 });
 
 void main() async{
+  await dotenv.load();
   WidgetsFlutterBinding.ensureInitialized();
   final container = ProviderContainer();
   await container.read(fcmServiceProvider).init();

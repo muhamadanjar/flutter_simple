@@ -6,7 +6,7 @@ part of 'auth_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authStateHash() => r'70b60d089a00ab32938bdef75ff31c70c4c3bfa8';
+String _$authStateHash() => r'298909d48bb1b3f1044eacedc14a462b66492fe4';
 
 /// See also [authState].
 @ProviderFor(authState)
@@ -22,7 +22,7 @@ final authStateProvider = AutoDisposeStreamProvider<AuthResult>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AuthStateRef = AutoDisposeStreamProviderRef<AuthResult>;
-String _$hasRoleHash() => r'e433090c81abbfe9202989ed4e0b2d8a6c551341';
+String _$hasRoleHash() => r'5ad1f601322a18d297b178da0af95bf4824c402e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -170,7 +170,7 @@ class _HasRoleProviderElement extends AutoDisposeFutureProviderElement<bool>
   String get role => (origin as HasRoleProvider).role;
 }
 
-String _$currentUserHash() => r'b1cce63c97d55128f56cce7239eeb203e1e690a3';
+String _$currentUserHash() => r'f94b6693d984b8c9800b868874a5521cdbedca0d';
 
 /// See also [currentUser].
 @ProviderFor(currentUser)
@@ -186,7 +186,7 @@ final currentUserProvider = AutoDisposeFutureProvider<User?>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef CurrentUserRef = AutoDisposeFutureProviderRef<User?>;
-String _$authNotifierHash() => r'62cf254861bad265dee276fffd70e7a46163f32e';
+String _$authNotifierHash() => r'c8123e5f007e3f62b1da6fb1d2f8a515a52f205f';
 
 /// See also [AuthNotifier].
 @ProviderFor(AuthNotifier)

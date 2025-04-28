@@ -152,6 +152,24 @@ class AuthNotifier extends _$AuthNotifier {
       },
     );
   }
+
+  Future<AuthResult> sigInWithKemnaker() async {
+    state = const AsyncValue.loading();
+    final siginWithKemnakerUseCase = ref.read(signInWithKemnakerUseCaseProvider);
+    final result = await siginWithKemnakerUseCase.call(const NoParams());
+    return result.fold(
+        (failure){
+          state = AsyncValue.error(failure, StackTrace.current);
+          return AuthResult.unauthenticated(errorMessage: failure.message);
+
+        },
+        (authResult){
+          state = const AsyncValue.data(null);
+          return authResult;
+
+        }
+    );
+  }
 }
 
 // User role provider - checks if a user has a specific role

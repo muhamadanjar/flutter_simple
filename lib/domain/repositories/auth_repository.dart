@@ -35,6 +35,7 @@ abstract class AuthRepository {
 
   /// Sign in dengan Apple OAuth2
   Future<Either<Failure, AuthResult>> signInWithApple();
+  Future<Either<Failure, AuthResult>> signInWithKemnaker();
 
 
   /// Reset password
