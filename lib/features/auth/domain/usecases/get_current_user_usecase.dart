@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../entities/user.dart';
+import 'package:flutter_simple/features/auth/domain/entities/user.dart';
 import '../repositories/auth_repository.dart';
-import '../../core/errors/failure.dart';
-import '../../core/usecases/usecase.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../../core/usecases/usecase.dart';
 
 class GetCurrentUserUseCase implements UseCase<User?, NoParams> {
   final AuthRepository repository;

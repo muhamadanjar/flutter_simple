@@ -4,8 +4,8 @@ import '../../domain/entities/auth_result.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_remote_datasource.dart';
-import '../../core/errors/failure.dart';
-import '../../core/network/network_info.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../../core/network/network_info.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;

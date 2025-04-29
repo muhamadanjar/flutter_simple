@@ -1,5 +1,5 @@
-import 'package:flutter_simple/data/models/role_model.dart';
-import 'package:flutter_simple/domain/entities/user.dart';
+import 'package:flutter_simple/features/auth/data/models/role_model.dart';
+import 'package:flutter_simple/features/auth/domain/entities/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';

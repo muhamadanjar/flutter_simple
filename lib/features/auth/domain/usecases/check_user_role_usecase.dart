@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import '../repositories/user_repository.dart';
-import '../../core/errors/failure.dart';
-import '../../core/usecases/usecase.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../../core/usecases/usecase.dart';
 
 class CheckUserRoleParams {
   final String userId;

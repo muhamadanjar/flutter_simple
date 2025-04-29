@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_simple/domain/entities/role.dart';
+import 'package:flutter_simple/features/auth/domain/entities/role.dart';
 
 class User extends Equatable {
   final String id;

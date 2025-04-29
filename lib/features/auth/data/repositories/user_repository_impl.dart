@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repository.dart';
-import '../datasources/user_remote_datasource.dart';
-import '../../core/errors/failure.dart';
-import '../../core/network/network_info.dart';
+import '../../data/datasources/user_remote_datasource.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../../core/network/network_info.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserRemoteDataSource remoteDataSource;

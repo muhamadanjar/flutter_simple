@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../domain/entities/user.dart';
-import '../../domain/repositories/user_repository.dart';
+import '../../features/auth/domain/entities/user.dart';
+import '../../features/auth/domain/repositories/user_repository.dart';
 import 'providers.dart';
 import 'auth_provider.dart';
 

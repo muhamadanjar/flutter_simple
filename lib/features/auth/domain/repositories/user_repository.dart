@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../entities/user.dart';
-import '../../core/errors/failure.dart';
+import '../../domain/entities/user.dart';
+import '../../../../core/errors/failure.dart';
 
 abstract class UserRepository {
   /// Get user information by id

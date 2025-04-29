@@ -20,3 +20,15 @@ samples, guidance on mobile development, and a full API reference.
 ```bash
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
+
+
+```md
+packages/button
+├── lib
+├── package.json
+├── src
+│   ├── button.stories.tsx
+│   ├── button.tsx
+│   └── index.ts
+└── tsconfig.json
+```

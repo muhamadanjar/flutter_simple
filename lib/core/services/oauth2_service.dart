@@ -7,13 +7,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:math';
 import 'package:crypto/crypto.dart';
-import 'package:http/http.dart' as http;
 
+import '../../features/auth/data/models/auth_model.dart';
+import '../../features/auth/data/models/user_model.dart';
 import '../api/api_client.dart';
 import '../constants/api_constants.dart';
 import '../constants/storage_constants.dart';
-import '../../data/models/auth_model.dart';
-import '../../data/models/user_model.dart';
 
 class OAuth2Service {
   final ApiClient _apiClient;

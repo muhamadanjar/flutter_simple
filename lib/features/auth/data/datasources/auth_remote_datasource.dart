@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../core/api/api_client.dart';
-import '../../core/constants/api_constants.dart';
-import '../../core/constants/storage_constants.dart';
-import '../../core/errors/failure.dart';
-import '../../core/services/oauth2_service.dart';
+import '../../../../core/api/api_client.dart';
+import '../../../../core/constants/api_constants.dart';
+import '../../../../core/constants/storage_constants.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../../core/services/oauth2_service.dart';
 import '../models/auth_model.dart';
 import '../models/user_model.dart';
 

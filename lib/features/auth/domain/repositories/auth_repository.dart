@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../entities/auth_result.dart';
 import '../entities/user.dart';
-import '../../core/errors/failure.dart';
+import '../../../../core/errors/failure.dart';
 
 abstract class AuthRepository {
   /// Stream untuk memantau status autentikasi

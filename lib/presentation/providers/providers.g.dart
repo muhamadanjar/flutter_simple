@@ -40,7 +40,23 @@ final oauth2ServiceProvider = AutoDisposeProvider<OAuth2Service>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef Oauth2ServiceRef = AutoDisposeProviderRef<OAuth2Service>;
-String _$networkInfoHash() => r'5e7680e5e247832edeb91d7f3aef5cbdbb78716f';
+String _$connectivityHash() => r'da8080dfc40288eff97ff9cb96e9d9577714a9a0';
+
+/// See also [connectivity].
+@ProviderFor(connectivity)
+final connectivityProvider = AutoDisposeProvider<Connectivity>.internal(
+  connectivity,
+  name: r'connectivityProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$connectivityHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ConnectivityRef = AutoDisposeProviderRef<Connectivity>;
+String _$networkInfoHash() => r'18ee81c027f09c50db1342b8c06124f51c69c426';
 
 /// See also [networkInfo].
 @ProviderFor(networkInfo)
@@ -56,6 +72,45 @@ final networkInfoProvider = AutoDisposeProvider<NetworkInfo>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef NetworkInfoRef = AutoDisposeProviderRef<NetworkInfo>;
+String _$connectivityStreamHash() =>
+    r'd7f5e651d55eac1f5208b07675bc0b369f097bff';
+
+/// See also [connectivityStream].
+@ProviderFor(connectivityStream)
+final connectivityStreamProvider =
+    AutoDisposeStreamProvider<List<ConnectivityResult>>.internal(
+      connectivityStream,
+      name: r'connectivityStreamProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$connectivityStreamHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ConnectivityStreamRef =
+    AutoDisposeStreamProviderRef<List<ConnectivityResult>>;
+String _$connectionStatusHash() => r'95481660aae19606ddb8f59a601172ebb14c5e9f';
+
+/// See also [connectionStatus].
+@ProviderFor(connectionStatus)
+final connectionStatusProvider = AutoDisposeFutureProvider<bool>.internal(
+  connectionStatus,
+  name: r'connectionStatusProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$connectionStatusHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ConnectionStatusRef = AutoDisposeFutureProviderRef<bool>;
 String _$authRemoteDataSourceHash() =>
     r'6560d50f49db03a647bfbf391c9ed8c93900f1e0';
 
