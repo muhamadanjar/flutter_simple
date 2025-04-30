@@ -1,5 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_simple/features/home/data/datasources/slider_remote_datasource.dart';
+import 'package:flutter_simple/features/home/domain/repositories/slider_repository.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../core/api/api_client.dart';
@@ -20,6 +22,7 @@ import '../../features/auth/domain/usecases/signout_usecase.dart';
 import '../../features/auth/domain/usecases/get_current_user_usecase.dart';
 import '../../features/auth/domain/usecases/check_user_role_usecase.dart';
 import '../../core/network/network_info.dart';
+import '../../features/home/data/repositories/slider_repository_impl.dart';
 
 part 'providers.g.dart';
 
@@ -75,6 +78,7 @@ UserRemoteDataSource userRemoteDataSource(Ref ref) {
   );
 }
 
+
 // Repository providers
 @riverpod
 AuthRepository authRepository(Ref ref) {
@@ -91,6 +95,7 @@ UserRepository userRepository(Ref ref) {
     networkInfo: ref.watch(networkInfoProvider),
   );
 }
+
 
 // UseCase providers
 @riverpod

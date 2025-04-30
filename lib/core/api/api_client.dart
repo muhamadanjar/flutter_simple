@@ -6,6 +6,20 @@ import 'token_interceptor.dart';
 class ApiClient {
   late Dio _dio;
 
+  Dio _withBaseUrl(String? baseUrl) {
+    if (baseUrl == null || baseUrl == _dio.options.baseUrl) {
+      return _dio;
+    }
+
+    final dio = Dio(
+      _dio.options.copyWith(baseUrl: baseUrl),
+    );
+
+    dio.interceptors.addAll(_dio.interceptors);
+
+    return dio;
+  }
+
   ApiClient() {
     _dio = Dio(
       BaseOptions(
@@ -30,9 +44,9 @@ class ApiClient {
   }
 
   // GET request
-  Future<dynamic> get(String path, {Map<String, dynamic>? queryParameters}) async {
+  Future<dynamic> get(String path, {Map<String, dynamic>? queryParameters, String? baseUrl,}) async {
     try {
-      final response = await _dio.get(
+      final response = await _withBaseUrl(baseUrl).get(
         path,
         queryParameters: queryParameters,
       );

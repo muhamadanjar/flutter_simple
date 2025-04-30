@@ -62,7 +62,7 @@ class SocialAuthButton extends StatelessWidget {
     switch (provider) {
       case SocialAuthProvider.google:
         return Image.asset(
-          'assets/img/logo_apple.png',
+          'assets/img/google_logo.png',
           height: 24,
           width: 24,
         );
@@ -74,13 +74,13 @@ class SocialAuthButton extends StatelessWidget {
         );
       case SocialAuthProvider.apple:
         return Image.asset(
-          'assets/img/logo_apple.png',
+          'assets/img/apple_logo.png',
           height: 24,
           width: 24,
         );
       case SocialAuthProvider.kemnaker:
         return Image.asset(
-          'assets/img/logo_apple.png',
+          'assets/img/google_logo.png',
           height: 24,
           width: 24,
         );

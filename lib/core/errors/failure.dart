@@ -24,3 +24,7 @@ class AuthFailure extends Failure {
   const AuthFailure({required String message, int? code})
       : super(message: message, code: code);
 }
+
+class DatabaseFailure extends Failure {
+  const DatabaseFailure({ required super.message, super.code});
+}

@@ -37,7 +37,6 @@ abstract class AuthRepository {
   Future<Either<Failure, AuthResult>> signInWithApple();
   Future<Either<Failure, AuthResult>> signInWithKemnaker();
 
-
   /// Reset password
   Future<Either<Failure, void>> resetPassword(String email);
 }

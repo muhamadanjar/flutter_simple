@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simple/features/home/presentation/widgets/slider_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/constants/role_constants.dart';
-import '../../providers/auth_provider.dart';
-import '../../widgets/common/role_based_widget.dart';
+import '../../../../core/constants/role_constants.dart';
+import '../../../../presentation/providers/auth_provider.dart';
+import '../../../../presentation/widgets/common/role_based_widget.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Home 1'),
         actions: [
           IconButton(
             icon: const Icon(Icons.person),
@@ -103,6 +104,8 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 24),
+                HomeSliderWdiget(),
                 const SizedBox(height: 24),
                 const Text(
                   'Dashboard',

@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../core/usecases/usecase.dart';
 import '../../features/auth/domain/entities/auth_result.dart';
-import '../../features/auth/domain//entities/user.dart';
+import '../../features/auth/domain/entities/user.dart';
 import '../../features/auth/domain/usecases/signin_usecase.dart';
 import '../../features/auth/domain/usecases/signup_usecase.dart';
 import '../../features/auth/domain/usecases/check_user_role_usecase.dart';

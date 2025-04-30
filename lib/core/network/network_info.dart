@@ -14,7 +14,9 @@ class NetworkInfoImpl implements NetworkInfo {
     // In a real app, you'd use a connectivity plugin
     // For simplicity, we'll just return true
     final connectivityResult = await connectivity.checkConnectivity();
+    print(connectivityResult);
     return connectivityResult != ConnectivityResult.none;
+    // return true;
   }
 
   @override
