@@ -14,7 +14,6 @@ class SliderItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('slider item build ${slide.imageUrl}');
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),

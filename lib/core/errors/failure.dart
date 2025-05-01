@@ -15,6 +15,12 @@ class ServerFailure extends Failure {
       : super(message: message, code: code);
 }
 
+
+class BadRequest extends Failure {
+  const BadRequest({required String message, int? code})
+      : super(message: message, code: code);
+}
+
 class CacheFailure extends Failure {
   const CacheFailure({required String message, int? code})
       : super(message: message, code: code);

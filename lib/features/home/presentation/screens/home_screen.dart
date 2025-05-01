@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simple/features/home/presentation/widgets/home_menu.dart';
 import 'package:flutter_simple/features/home/presentation/widgets/slider_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -17,7 +18,7 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home 1'),
+        title: const Text('Home'),
         actions: [
           IconButton(
             icon: const Icon(Icons.person),
@@ -106,6 +107,8 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 24),
                 HomeSliderWdiget(),
+                const SizedBox(height: 24),
+                HomeMenu(),
                 const SizedBox(height: 24),
                 const Text(
                   'Dashboard',
